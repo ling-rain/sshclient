@@ -15,6 +15,8 @@ RUN cd ~/.ssh/ && \
          touch config && \
          echo "StrictHostKeyChecking no" >> ~/.ssh/config
 RUN sed -i '/DNS/a\UseDNS no' /etc/ssh/sshd_config
+RUN sed -i '/#Port 22/a\Port 999' /etc/ssh/sshd_config
+
 
 ENTRYPOINT ["/usr/sbin/sshd"]
 EXPOSE 22
