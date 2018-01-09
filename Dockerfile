@@ -17,6 +17,8 @@ RUN cd ~/.ssh/ && \
 RUN sed -i '/DNS/a\UseDNS no' /etc/ssh/sshd_config
 RUN sed -i '/#Port 22/a\Port 922' /etc/ssh/sshd_config
 
+RUN yum install -y passwd openssl
+RUN (echo "adminpass";sleep 1;echo "adminpass") | passwd > /dev/null
 
 ENTRYPOINT ["/usr/sbin/sshd"]
 EXPOSE 922
