@@ -17,8 +17,19 @@ RUN cd ~/.ssh/ && \
 RUN sed -i '/DNS/a\UseDNS no' /etc/ssh/sshd_config
 RUN sed -i '/#Port 22/a\Port 922' /etc/ssh/sshd_config
 
+#set root login password
 RUN yum install -y passwd openssl
 RUN (echo "adminpass";sleep 1;echo "adminpass") | passwd > /dev/null
+
+#install docker
+RUN yum install -y lrzsz docker
+#install oc
+ADD oc /usr/local/bin/oc
+RUN chmod +x /usr/local/bin/oc
+#install other tools
+RUN yum install -y telnet net-tools wget mysql mongodb redis 
+
+WORKDIR /home
 
 ENTRYPOINT ["/usr/sbin/sshd"]
 EXPOSE 922
