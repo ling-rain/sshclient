@@ -27,7 +27,7 @@ RUN yum install -y lrzsz docker
 ADD oc /usr/local/bin/oc
 RUN chmod +x /usr/local/bin/oc
 #install other tools
-RUN yum install -y telnet net-tools wget mysql mongodb redis 
+RUN yum install -y vim telnet net-tools wget mysql mongodb redis 
 
 WORKDIR /home
 
