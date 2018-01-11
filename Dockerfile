@@ -1,6 +1,7 @@
-FROM centos:7.4.1708
-#FROM centos:7.2
+
+FROM centos:7
 #FROM centos:7.2.1511
+#FROM centos:7.4.1708
 
 #install ssh
 RUN yum -y install openssh-server openssh-clients
